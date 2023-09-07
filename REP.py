@@ -14,15 +14,16 @@ def createFolder(foldername):
     except FileExistsError:
         print("Directory" , foldername , "already exists!")
 
-def reppydirs():
+
+def reppydirs(pyimport, pyexport):
     # Get current workdir
-    global reppyimport, reppytemp, reppyexport, workindir
+    global reppytemp, workindir
     workindir = os.getcwd()
     # create Required Folders
-    reppyimport = workindir + '\\import'
-    reppytemp = workindir + '\\temp'
-    reppyexport = workindir + '\\export'
-    
+    reppyimport = os.path.join(workindir, pyimport)
+    reppytemp = os.path.join(workindir, 'temp')
+    reppyexport = os.path.join(workindir, pyexport)
+
     createFolder(reppyimport)
     createFolder(reppytemp)
     createFolder(reppyexport)
@@ -42,7 +43,7 @@ def findPasswordLine(inputSource,tempdir,filename):
 def writeback2excel(zip_file,workindir):
     # 7Zip Locations
     z7location = workindir + '\\7z\\7za.exe'
-    # Export with 7z 
+    # Export with 7z
     os.system(f'{z7location} u "{zip_file}" "{workindir}\\temp\\export\\*" ')
 
 def cleanupTemp(tempfolder):
@@ -58,7 +59,7 @@ def main(rimport,rtemp,rexport):
     for file in listOfFile:
         print(file)
         # Copy file to work with
-        src_dir = rimport + '\\' + file 
+        src_dir = rimport + '\\' + file
         dst_temp_dir = rtemp + '\\temp_' + file
         dst_exp_dir = rexport + '\\[REPpy]' + file
         shutil.copy(src_dir,dst_temp_dir)
@@ -86,10 +87,10 @@ def main(rimport,rtemp,rexport):
             writeback2excel(dst_exp_dir,workindir)
             # Cleanup the existing files to avoid corruption on multiple Excel Inputs
             cleanupTemp(ziptmp)
-    # Delete the Temp folder. Noone needs it afterwards   
-    cleanupTemp(reppytemp)     
-    return
+    # Delete the Temp folder. Noone needs it afterwards
+    cleanupTemp(reppytemp)
+    return dst_exp_dir
 
-## Execution
-reppydirs()
-main(reppyimport,reppytemp,reppyexport)
+def removePassword(pyimport, pyexport):
+    reppydirs(pyimport, pyexport)
+    return main(pyimport,reppytemp,pyexport)

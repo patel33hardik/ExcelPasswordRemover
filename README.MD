@@ -22,10 +22,4 @@ Requirements:
 
 Create a Folder called import. Place your excel file/s inside and run the script.
 
-
 Happy Password Removing ^^
-
-
-#### Saved you time & Stress? 
-
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/A0A7FA8GY)
