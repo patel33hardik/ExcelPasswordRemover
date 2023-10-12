@@ -22,4 +22,6 @@ Requirements:
 
 Create a Folder called import. Place your excel file/s inside and run the script.
 
+Project moved to another repo: https://github.com/patel33hardik/excel_password_remover
+
 Happy Password Removing ^^
