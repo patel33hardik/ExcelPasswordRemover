@@ -14,8 +14,6 @@ If you cannot open the Excel File to atleast read its Content you need to look f
 
 Currently Tested with Excel Versions 2010,2013,2016
 
-O365 to come
-
 If you use older Versions of excel you can give it a try but i cannot guarantee.
 
 Requirements:
